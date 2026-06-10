@@ -1,0 +1,302 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --gold:#d4af37;
+    --gold-light:#f4d06f;
+    --dark:#111111;
+    --card:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.15);
+}
+
+body{
+    font-family:'Noto Serif KR',serif;
+    min-height:100vh;
+    color:white;
+    background:
+    linear-gradient(
+        rgba(0,0,0,.78),
+        rgba(0,0,0,.78)
+    ),
+    url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    backdrop-filter:blur(2px);
+    pointer-events:none;
+}
+
+.container{
+    position:relative;
+    z-index:1;
+    max-width:1500px;
+    margin:auto;
+    padding:30px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.subtitle{
+    color:var(--gold);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:var(--gold);
+    margin-bottom:10px;
+}
+
+.description{
+    color:#ddd;
+    margin-bottom:25px;
+}
+
+.recommend-btn{
+    border:none;
+    cursor:pointer;
+    padding:15px 32px;
+    border-radius:50px;
+    font-size:1rem;
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-light)
+    );
+
+    color:black;
+    transition:.3s;
+}
+
+.recommend-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(212,175,55,.35);
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+.recipe-section,
+.bookmark-section{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:25px;
+    backdrop-filter:blur(15px);
+}
+
+.loading-card{
+    text-align:center;
+    padding:120px 20px;
+}
+
+.loader{
+    width:60px;
+    height:60px;
+    margin:auto;
+    border:4px solid rgba(255,255,255,.2);
+    border-top:4px solid var(--gold);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.loading-card p{
+    margin-top:20px;
+}
+
+.recipe-image{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+}
+
+.recipe-content{
+    padding:30px;
+}
+
+.recipe-title{
+    font-size:2.5rem;
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.recipe-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.tag{
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(212,175,55,.15);
+    color:var(--gold-light);
+}
+
+.action-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.save-btn{
+    border:none;
+    cursor:pointer;
+    padding:12px 18px;
+    border-radius:10px;
+    font-weight:bold;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-light)
+    );
+
+    color:black;
+}
+
+.section{
+    margin-top:25px;
+}
+
+.section h3{
+    color:var(--gold);
+    margin-bottom:10px;
+}
+
+.ingredients{
+    columns:2;
+}
+
+.ingredients li{
+    margin-bottom:8px;
+}
+
+.instructions{
+    line-height:1.9;
+    color:#eee;
+}
+
+.bookmark-section{
+    padding:25px;
+    height:fit-content;
+}
+
+.bookmark-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.bookmark-header h2{
+    color:var(--gold);
+}
+
+#bookmarkCount{
+    font-size:.9rem;
+    color:#ccc;
+}
+
+.bookmark-item{
+    background:rgba(255,255,255,.05);
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:12px;
+}
+
+.bookmark-title{
+    cursor:pointer;
+    font-weight:bold;
+    margin-bottom:8px;
+    transition:.2s;
+}
+
+.bookmark-title:hover{
+    color:var(--gold);
+}
+
+.bookmark-rating{
+    color:#ffd700;
+    margin-bottom:10px;
+}
+
+.delete-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+    border-radius:8px;
+    background:#b22222;
+    color:white;
+}
+
+.rating{
+    display:flex;
+    gap:6px;
+    align-items:center;
+}
+
+.star{
+    font-size:28px;
+    color:#555;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.star.active{
+    color:#ffd700;
+}
+
+.empty-bookmark{
+    color:#ccc;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:1000px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:2.7rem;
+    }
+
+    .recipe-image{
+        height:300px;
+    }
+
+    .ingredients{
+        columns:1;
+    }
+}
